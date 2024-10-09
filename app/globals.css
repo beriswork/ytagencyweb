@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 3%;
+    --foreground: 210 40% 98%;
+    --card: 0 0% 5%;
+    --card-foreground: 210 40% 98%;
+    --popover: 0 0% 3%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 270 91% 65%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 0 0% 15%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 217 91% 60%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    background: radial-gradient(circle at center, #080808, #050505, #030303);
+  }
+}
+
+.glow-effect {
+  box-shadow: 0 0 5px theme('colors.primary.DEFAULT'),
+              0 0 10px theme('colors.secondary.DEFAULT');
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.glow-effect:hover {
+  box-shadow: 0 0 10px theme('colors.primary.DEFAULT'),
+              0 0 20px theme('colors.secondary.DEFAULT');
+}
+
+.animated-gradient {
+  background: linear-gradient(270deg, theme('colors.primary.DEFAULT'), theme('colors.secondary.DEFAULT'));
+  background-size: 200% 200%;
+  animation: gradient 5s ease infinite;
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.mouse-cursor {
+  width: 20px;
+  height: 20px;
+  border: 2px solid theme('colors.primary.DEFAULT');
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  transition: 0.1s;
+  z-index: 9999;
+}
+
+.mouse-cursor::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  background: theme('colors.secondary.DEFAULT');
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.metallic-button {
+  background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+  border: 1px solid #2a2a2a;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.metallic-button:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #f0f0f0;
+  opacity: 0;
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
